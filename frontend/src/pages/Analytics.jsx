@@ -12,10 +12,17 @@ const COLORS = ['#6366f1','#06b6d4','#10b981','#f59e0b','#ef4444','#8b5cf6','#ec
 
 const ChartTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
+  
+  const title = label || payload[0].name || payload[0].payload?.name;
+  
   return (
     <div className="glass-card p-3 shadow-xl border-dark-600/50">
-      <p className="text-sm font-medium text-white">{label || payload[0].name}</p>
-      <p className="text-sm text-primary-400 font-semibold">₹{payload[0].value?.toLocaleString()}</p>
+      <p className="text-sm font-medium text-white mb-1">{title}</p>
+      {payload.map((entry, index) => (
+        <p key={index} className="text-sm font-semibold capitalize" style={{ color: entry.color || '#818cf8' }}>
+          {entry.name !== title ? `${entry.name}: ` : ''}₹{entry.value?.toLocaleString()}
+        </p>
+      ))}
     </div>
   );
 };
