@@ -1,16 +1,86 @@
-# React + Vite
+# ExpenseIQ 💰 – Smart Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Smart Expense Tracker with AI-powered insights, built with **React.js**, **Node.js**, **Express**, and **MongoDB**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🔐 **Authentication** – Register/Login with JWT
+- 📊 **Dashboard** – Income, Expense & Savings overview
+- 💳 **Transactions** – Add, Edit, Delete with filters & search
+- 📈 **Analytics** – Pie & Bar charts (Recharts)
+- 🤖 **AI Insights** – Smart spending analysis & predictions
+- 📄 **PDF Reports** – Downloadable financial reports
+- 🔔 **Budget Alerts** – Warnings when nearing limit
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Tech |
+|-------|------|
+| Frontend | React.js, Tailwind CSS, Recharts, Vite |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Auth | JWT, bcrypt |
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+ExpenseIQ/
+├── frontend/          # React + Vite
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── hooks/
+│   │   └── context/
+│   └── package.json
+│
+├── backend/           # Express + MongoDB
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+│
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- MongoDB running locally on port 27017
+
+### Backend
+```bash
+cd backend
+npm install
+# Create .env with: PORT=5000, MONGODB_URI, JWT_SECRET
+npm start
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register user |
+| POST | `/api/auth/login` | Login |
+| GET | `/api/transactions` | List transactions |
+| POST | `/api/transactions` | Create transaction |
+| PUT | `/api/transactions/:id` | Update transaction |
+| DELETE | `/api/transactions/:id` | Delete transaction |
+| GET | `/api/analytics/summary` | Financial summary |
+| GET | `/api/analytics/categories` | Category breakdown |
+| GET | `/api/analytics/monthly` | Monthly trends |
+| POST | `/api/ai-insights/generate` | AI analysis |
+| GET | `/api/reports/pdf` | Download PDF report |
+
+## License
+
+MIT
